@@ -99,5 +99,5 @@ __*You can select the radio button next to the PAYDUNYA from the list of payment
 
 ## == Changelog ==
 
-## = 1.0.0 =
--   First release
+## = 2.0.0 =
+-   Second release
