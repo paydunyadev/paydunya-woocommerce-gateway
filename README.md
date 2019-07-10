@@ -32,7 +32,7 @@ This plugin is meant to be used by merchants in Senegal.
 
 -   __Accept payment__ via Mobile Money.
 - 	__Seamless integration__ into the WooCommerce checkout page.
-- 	__Add BCEAO XOF__ currency symbol. To select it go to go to __WooCommerce > Settings__ from the left hand menu, then click __General__ from the top tab. From __Currency__ select BCEAO XOF, then click on __Save Changes__ for your changes to be effected.
+- 	__Add BCEAO XOF__ currency symbol. To select it go to go to __WooCommerce > Settings__ from the left hand menu, then click __General__ from the top tab. From __Currency__ select BCEAO XOF, then click on __Save Changes__ for your changes to be effected.
 - 	__Send SMS notification__ to customer on successful payment. This feature has to be enabled and configured before it will work, you will need a SMS API.
 
 
@@ -51,7 +51,7 @@ If you have suggestions or a new feature request, feel free to get in touch with
 -	From the search result you will see "Woocommerce PAYDUNYA Payment Plugin" click on "Install Now" to install the plugin
 -	A popup window will ask you to confirm your wish to install the Plugin.
 
-- Click "Proceed" to continue the installation. The resulting installation screen will list the installation as successful or note any problems during the install.
+- Click "Proceed" to continue the installation. The resulting installation screen will list the installation as successful or note any problems during the install.
 - If successful, click "Activate Plugin" to activate it.
 - 	Open the settings page for WooCommerce and click the "Payment Gateways," tab.
 - 	Click on the sub tab for "PAYDUNYA".
@@ -60,7 +60,7 @@ If you have suggestions or a new feature request, feel free to get in touch with
 ## = Manual Installation =
 1. 	Download the plugin zip file
 2. 	Login to your WordPress Admin. Click on "Plugins > Add New" from the left hand menu.
-3.  Click on the "Upload" option, then click "Choose File" to select the zip file from your computer. Once selected, press "OK" and press the "Install Now" button.
+3.  Click on the "Upload" option, then click "Choose File" to select the zip file from your computer. Once selected, press "OK" and press the "Install Now" button.
 4.  Activate the plugin.
 5. 	Open the settings page for WooCommerce and click the "Payment Gateways," tab.
 6. 	Click on the sub tab for "PAYDUNYA".
@@ -69,7 +69,7 @@ If you have suggestions or a new feature request, feel free to get in touch with
 
 
 ## = Configure the plugin =
-To configure the plugin, go to __WooCommerce > Settings__ from the left hand menu, then click "Payment Gateways" from the top tab. You should see __"PAYDUNYA"__ as an option at the top of the screen. Click on it to configure the payment gateway.
+To configure the plugin, go to __WooCommerce > Settings__ from the left hand menu, then click "Payment Gateways" from the top tab. You should see __"PAYDUNYA"__ as an option at the top of the screen. Click on it to configure the payment gateway.
 
 __*You can select the radio button next to the PAYDUNYA from the list of payment gateways available to make it the default gateway.*__
 
