@@ -248,19 +248,19 @@ function woocommerce_paydunya_init() {
 							$token = $this->live_token;
 					}
 		
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_HEADER, 0);
-		curl_setopt($ch, CURLOPT_POST, true);
-		curl_setopt($ch, CURLOPT_NOBODY, false);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-		curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-		curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-									"PAYDUNYA-MASTER-KEY: $master_key",
-									"PAYDUNYA-PRIVATE-KEY: $private_key",
-									"PAYDUNYA-TOKEN: $token"
-					));
+					curl_setopt($ch, CURLOPT_URL, $url);
+					curl_setopt($ch, CURLOPT_HEADER, 0);
+					curl_setopt($ch, CURLOPT_POST, true);
+					curl_setopt($ch, CURLOPT_NOBODY, false);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+					curl_setopt($ch, CURLOPT_HTTP_VERSION, CURL_HTTP_VERSION_1_0);
+					curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+												"PAYDUNYA-MASTER-KEY: $master_key",
+												"PAYDUNYA-PRIVATE-KEY: $private_key",
+												"PAYDUNYA-TOKEN: $token"
+								));
 		
 		
 					$response = curl_exec($ch);			
@@ -342,7 +342,7 @@ function woocommerce_paydunya_init() {
 									curl_setopt_array($ch, array(
 											CURLOPT_URL => $url,
 											CURLOPT_NOBODY => false,
-					CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_0,
+											CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_0,
 											CURLOPT_RETURNTRANSFER => true,
 											CURLOPT_SSL_VERIFYPEER => false,
 											CURLOPT_HTTPHEADER => array(
