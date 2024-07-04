@@ -24,7 +24,7 @@
 const settings = window.wc.wcSettings.getSetting("paydunya_data", {});
 const label =
   window.wp.htmlEntities.decodeEntities(settings.title) ||
-  window.wp.i18n.__("", "paydunya");
+  window.wp.i18n.__("PAYDUNYA", "paydunya");
 
 const Content = () => {
   const description = window.wp.htmlEntities.decodeEntities(
