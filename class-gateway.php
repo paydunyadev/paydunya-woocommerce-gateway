@@ -127,7 +127,7 @@ if (!defined('ABSPATH')) {
           'title' => __('Description:', 'paydunya'),
           'type' => 'textarea',
           'description' => __('Description que verra le client lors du paiement de sa commande.', 'paydunya'),
-          'default' => __('<h1>PAYDUNYA est la passerelle de paiement la plus populaire pour les achats en ligne au Sénégal.</h1>', 'paydunya')
+          'default' => __('<h1>PayDunya est la plateforme sécurisée qui facilite le paiement des entreprises pour l\'achat de biens et services via mobile money et cartes bancaires .</h1>', 'paydunya')
         ),
         'master_key' => array(
           'title' => __('Clé Principale', 'paydunya'),

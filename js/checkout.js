@@ -24,12 +24,12 @@
 const settings = window.wc.wcSettings.getSetting("paydunya_data", {});
 const label =
   window.wp.htmlEntities.decodeEntities(settings.title) ||
-  window.wp.i18n.__("PAYDUNYA Gateway", "paydunya");
+  window.wp.i18n.__("", "paydunya");
 
 const Content = () => {
   const description = window.wp.htmlEntities.decodeEntities(
     settings.description ||
-      "est la passerelle de paiement la plus populaire pour les achats en ligne au Sénégal"
+      "PAYDUNYA est la plateforme sécurisée qui facilite le paiement des entreprises pour l'achat de biens et services via mobile money et cartes bancaires ."
   );
 
   // Vérifiez si l'URL de l'icône est définie dans les paramètres
@@ -48,7 +48,7 @@ const Content = () => {
       alt: label,
       style: { width: "50px", height: "50px", marginRight: "10px" },
     }),
-    window.wp.element.createElement("span", null, description)
+    window.wp.element.createElement("strong", null, description)
   );
 };
 
