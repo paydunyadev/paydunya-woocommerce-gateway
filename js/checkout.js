@@ -33,7 +33,13 @@ const Content = () => {
   );
 
   // Vérifiez si l'URL de l'icône est définie dans les paramètres
-  const iconUrl = settings.iconUrl || "assets/images/logo.png"; // Remplacez par l'URL par défaut de votre choix
+
+  // Remplacez par l'URL par défaut de votre choix
+  const domain = window.location.protocol + "//" + window.location.host;
+  const iconUrl =
+    settings.icon ||
+    domain +
+      "/wp-content/plugins/paydunya-woocommerce-payment-gateway/assets/images/logo.png"; // Remplacez par l'URL par défaut de votre choix
 
   // Debugging: Log the icon URL and description
   console.log("Icon URL:", iconUrl);
@@ -46,7 +52,7 @@ const Content = () => {
     window.wp.element.createElement("img", {
       src: iconUrl,
       alt: label,
-      style: { width: "50px", height: "50px", marginRight: "10px" },
+      style: { width: "32px", height: "32px", marginRight: "5px" },
     }),
     window.wp.element.createElement("strong", null, description)
   );

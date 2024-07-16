@@ -10,9 +10,37 @@ Author URI: https://paydunya.com
 
 // Your plugin code goes here
 
+if (!defined('ABSPATH')) {
+    exit;
+  }
+
+
 // if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+    
 //     exit;
 // }
+
+add_action('admin_init', 'paydunya_check_woocommerce_active');
+function paydunya_check_woocommerce_active() {
+    if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+        deactivate_plugins(plugin_basename(__FILE__));
+        add_action('admin_notices', 'paydunya_woocommerce_inactive_notice');
+        if (isset($_GET['activate'])) {
+            unset($_GET['activate']);
+        }
+        wp_safe_redirect(admin_url('plugins.php'));
+    }
+    
+}
+
+// Affiche un message d'erreur si WooCommerce n'est pas actif
+function paydunya_woocommerce_inactive_notice() {
+    echo '<div class="error"><p><strong>Erreur :</strong> WooCommerce doit être activé pour que le plugin "Passerelle de paiement PAYDUNYA pour WooCommerce" fonctionne.</p></div>';
+}
+
+
+
+// string $links;
 
 add_action('plugins_loaded', 'woocommerce_myplugin', 0);
 function woocommerce_myplugin(){
@@ -29,6 +57,14 @@ function add_my_custom_gateway($gateways) {
   $gateways[] = 'WC_Paydunya';
   return $gateways;
 }
+
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'plugin_action_links' );
+function plugin_action_links( $links ) {
+    $settings_link = '<a href="' . admin_url( 'admin.php?page=wc-settings&tab=checkout&section=paydunya' ) . '">Paramètres</a>';
+    array_push( $links, $settings_link );
+    return $links;
+}
+
 
 /**
  * Custom function to declare compatibility with cart_checkout_blocks feature 

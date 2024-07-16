@@ -42,7 +42,7 @@ final class My_Custom_Gateway_Blocks extends AbstractPaymentMethodType {
         return [
             'title' => $this->gateway->title,
             'description' => $this->gateway->description,
-            'iconUrl' => plugin_dir_url(__DIR__).'assets/images/logo.png',
+            'icon' => plugin_dir_url(__DIR__).'assets/images/logo.png',
         ];
     }
 
