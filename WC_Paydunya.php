@@ -73,7 +73,7 @@ class WC_Paydunya extends WC_Payment_Gateway
       wc_add_notice($_REQUEST["paydunya"], "error");
     }
 
-    if (isset($_REQUEST["token"]) && $_REQUEST["token"] <> "") {
+    if (isset($_REQUEST["token"]) && $_REQUEST["token"] !== "") {
       $token = trim($_REQUEST["token"]);
       $this->check_paydunya_response($token);
     } else {
@@ -83,7 +83,7 @@ class WC_Paydunya extends WC_Payment_Gateway
         $data = explode("=", $value);
         if (trim($data[0]) == "token") {
           $token = isset($data[1]) ? trim($data[1]) : "";
-          if ($token <> "") {
+          if ($token !== "") {
             $this->check_paydunya_response($token);
           }
           break;
@@ -395,7 +395,7 @@ class WC_Paydunya extends WC_Payment_Gateway
   {
     global $woocommerce;
 
-    if ($mtoken <> "") {
+    if ($mtoken !== "") {
       $wc_order_id = WC()->session->get('paydunya_wc_oder_id');
       $hash = WC()->session->get('paydunya_wc_hash_key');
       $order = wc_get_order($wc_order_id);
@@ -439,7 +439,7 @@ class WC_Paydunya extends WC_Payment_Gateway
           $custom_data = $response_decoded->custom_data;
           $order_id = $custom_data->order_id;
 
-          if ($wc_order_id <> $order_id) {
+          if ($wc_order_id !== $order_id) {
             $message = "Votre session de transaction a expiré. Votre numéro de commande est: $order_id";
             $message_type = "notice";
             $order->add_order_note($message);
