@@ -2,7 +2,7 @@
 /*
 Plugin Name: Passerelle de paiement PAYDUNYA pour WooCommerce
 Plugin URI: https://paydunya.com/developers/wordpress
-Description: Intégrer facilement des paiements via les Wallets Mobiles et les Cartes Bancaires dans votre site WooCommerce et commencer à accepter les paiements depuis le Sénégal, la Côte d'Ivoire et le Bénin.
+Description: PAYDUNYA est la plateforme sécurisée qui facilite le paiement des entreprises pour l'achat de biens et services via mobile money et cartes bancaires .
 Version: 1.1.7
 Author: PAYDUNYA
 Author URI: https://paydunya.com
