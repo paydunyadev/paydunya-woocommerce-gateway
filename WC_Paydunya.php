@@ -148,7 +148,7 @@ class WC_Paydunya extends WC_Payment_Gateway
         'title' => __('Description:', 'paydunya'),
         'type' => 'textarea',
         'description' => __('Description que verra le client lors du paiement de sa commande.', 'paydunya'),
-        'default' => __('<h1>PayDunya est la plateforme sécurisée qui facilite le paiement des entreprises pour l\'achat de biens et services via mobile money et cartes bancaires .</h1>', 'paydunya')
+        'default' => __('<h1>PAYDUNYA est la plateforme qui facilite le paiement pour l\'achat de biens et services via mobile money et cartes bancaires.</h1>', 'paydunya')
       ),
       'master_key' => array(
         'title' => __('Clé Principale', 'paydunya'),

@@ -1,26 +1,3 @@
-// const settings = window.wc.wcSettings.getSetting("paydunya_data", {});
-// const label =
-//   window.wp.htmlEntities.decodeEntities(settings.title) ||
-//   window.wp.i18n.__("PAYDUNYA Gateway", "paydunya");
-// const Content = () => {
-//   return window.wp.htmlEntities.decodeEntities(
-//     settings.description ||
-//       "PAYDUNYA est la passerelle de paiement la plus populaire pour les achats en ligne au Sénégal"
-//   );
-// };
-// const Block_Gateway = {
-//   name: "paydunya",
-//   label: label,
-//   content: Object(window.wp.element.createElement)(Content, null),
-//   edit: Object(window.wp.element.createElement)(Content, null),
-//   canMakePayment: () => true,
-//   ariaLabel: label,
-//   supports: {
-//     features: settings.supports,
-//   },
-// };
-// window.wc.wcBlocksRegistry.registerPaymentMethod(Block_Gateway);
-
 const settings = window.wc.wcSettings.getSetting("paydunya_data", {});
 const label =
   window.wp.htmlEntities.decodeEntities(settings.title) ||
@@ -29,32 +6,26 @@ const label =
 const Content = () => {
   const description = window.wp.htmlEntities.decodeEntities(
     settings.description ||
-      "PAYDUNYA est la plateforme sécurisée qui facilite le paiement des entreprises pour l'achat de biens et services via mobile money et cartes bancaires ."
+      "PAYDUNYA est la plateforme qui facilite le paiement pour l'achat de biens et services via mobile money et cartes bancaires."
   );
 
   // Vérifiez si l'URL de l'icône est définie dans les paramètres
-
-  // Remplacez par l'URL par défaut de votre choix
   const domain = window.location.protocol + "//" + window.location.host;
   const iconUrl =
     settings.icon ||
     domain +
-      "/wp-content/plugins/paydunya-woocommerce-payment-gateway/assets/images/logo.png"; // Remplacez par l'URL par défaut de votre choix
+      "/wp-content/plugins/paydunya-woocommerce-payment-gateway/assets/images/Icone.svg"; // Remplacez par l'URL par défaut de votre choix
 
-  // Debugging: Log the icon URL and description
-  console.log("Icon URL:", iconUrl);
-  console.log("Description:", description);
-
-  // Retourne le JSX avec l'icône et la description
+  // Retourne le JSX avec l'icône et la description alignée
   return window.wp.element.createElement(
     "div",
-    null,
+    { style: { display: "flex", alignItems: "center" } },
     window.wp.element.createElement("img", {
       src: iconUrl,
       alt: label,
       style: { width: "32px", height: "32px", marginRight: "5px" },
     }),
-    window.wp.element.createElement("strong", null, description)
+    window.wp.element.createElement("span", null, description)
   );
 };
 

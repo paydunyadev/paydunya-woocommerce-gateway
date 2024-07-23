@@ -2,7 +2,7 @@
 /*
 Plugin Name: Passerelle de paiement PAYDUNYA pour WooCommerce
 Plugin URI: https://paydunya.com/developers/wordpress
-Description: PAYDUNYA est la plateforme sécurisée qui facilite le paiement des entreprises pour l'achat de biens et services via mobile money et cartes bancaires .
+Description: PAYDUNYA est la plateforme qui facilite le paiement pour l'achat de biens et services via mobile money et cartes bancaires.
 Version: 1.1.7
 Author: PAYDUNYA
 Author URI: https://paydunya.com
