@@ -40,6 +40,20 @@ function paydunya_woocommerce_inactive_notice()
 }
 
 
+add_action('admin_notices', 'paydunya_currency_notice');
+
+function paydunya_currency_notice()
+{
+    // Vérifiez si vous êtes sur la page de configuration de WooCommerce
+    $screen = get_current_screen();
+    if ($screen->id === 'woocommerce_page_wc-settings' && isset($_GET['section']) && $_GET['section'] === 'paydunya') {
+        echo '<div class="notice notice-warning is-dismissible">';
+        echo '<p>' . __('Paydunya n\'accepte que la devise en BCEAO XOF (FCFA) --FCFA. Assurez-vous d\'ajouter BCEAO XOF (FCFA) --FCFA comme devise par défaut.', 'paydunya') . '</p>';
+        echo '</div>';
+    }
+}
+
+
 
 // string $links;
 

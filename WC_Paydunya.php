@@ -349,6 +349,14 @@ class WC_Paydunya extends WC_Payment_Gateway
   function process_payment($order_id)
   {
     $order = wc_get_order($order_id);
+
+    // Vérifiez la devise de la commande
+    if ($order->get_currency() !== 'FCFA') {
+
+      // Si la devise de la commande n'est pas FCFA, retournez à la page de
+      throw new Exception('Veuillez choisir la devise BCEAO XOF (FCFA) -- FCFA) pour continuer.');
+    }
+
     return array(
       'result' => 'success',
       'redirect' => $this->post_to_url($this->posturl, $this->get_paydunya_args($order), $order_id)
@@ -467,6 +475,19 @@ class WC_Paydunya extends WC_Payment_Gateway
               $sms = str_replace("{CUSTOMER}", $customer, $sms);
               $this->sendsms($phone_no, $sms);
             }
+          }
+
+
+          if ($status == "failed") {
+            $total_amount = strip_tags(wc_price($order->get_total()));
+            $message = "La transaction est failed, $order_id";
+            $message_type = "error";
+            $order->update_status('failed');
+            $order->add_order_note('Paiement PAYDUNYA n\'a été effectué <br/>ID unique reçu de PAYDUNYA: ' . $mtoken);
+            $order->add_order_note($this->msg['message']);
+            $woocommerce->cart->empty_cart();
+            $redirect_url = $this->get_return_url($order);
+            $customer = trim($order->get_billing_last_name() . " " . $order->get_billing_first_name());
           } else {
             //payment is still pending, or user cancelled request
             $message = "La transaction n'a pu être complétée.";
@@ -526,6 +547,14 @@ class WC_Paydunya extends WC_Payment_Gateway
           $order->update_status('completed');
           $order->add_order_note($this->msg['message']);
           // wc_update_product_stock($order);
+        } else {
+          if ($_POST['data']['status'] == "failed") {
+            $order = wc_get_order($_POST['data']['custom_data']['order_id']);
+
+            $order->update_status('failed');
+            $order->add_order_note($this->msg['message']);
+            // wc_update_product_stock($order);
+          }
         }
       } else {
         die("Cette requête n'a pas été émise par PayDunya");
