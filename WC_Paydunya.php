@@ -479,20 +479,10 @@ class WC_Paydunya extends WC_Payment_Gateway
 
 
           if ($status == "failed") {
-            $total_amount = strip_tags(wc_price($order->get_total()));
-            $message = "La transaction est failed, $order_id";
-            $message_type = "error";
-            $order->update_status('failed');
-            $order->add_order_note('Paiement PAYDUNYA n\'a été effectué <br/>ID unique reçu de PAYDUNYA: ' . $mtoken);
-            $order->add_order_note($this->msg['message']);
-            $woocommerce->cart->empty_cart();
-            $redirect_url = $this->get_return_url($order);
-            $customer = trim($order->get_billing_last_name() . " " . $order->get_billing_first_name());
-          } else {
-            //payment is still pending, or user cancelled request
             $message = "La transaction n'a pu être complétée.";
             $message_type = "error";
             $order->add_order_note("La transaction a échoué ou l'utilisateur a eu à faire demande d'annulation de paiement");
+            $order->update_status('failed');
             $redirect_url = $order->get_cancel_order_url();
           }
         } else {
@@ -547,14 +537,13 @@ class WC_Paydunya extends WC_Payment_Gateway
           $order->update_status('completed');
           $order->add_order_note($this->msg['message']);
           // wc_update_product_stock($order);
-        } else {
-          if ($_POST['data']['status'] == "failed") {
-            $order = wc_get_order($_POST['data']['custom_data']['order_id']);
+        }
+        if ($_POST['data']['status'] == "failed") {
+          $order = wc_get_order($_POST['data']['custom_data']['order_id']);
 
-            $order->update_status('failed');
-            $order->add_order_note($this->msg['message']);
-            // wc_update_product_stock($order);
-          }
+          $order->update_status('failed');
+          $order->add_order_note($this->msg['message']);
+          // wc_update_product_stock($order);
         }
       } else {
         die("Cette requête n'a pas été émise par PayDunya");
