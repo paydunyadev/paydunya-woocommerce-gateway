@@ -69,26 +69,41 @@ class WC_Paydunya extends WC_Payment_Gateway
     $this->msg['message'] = "";
     $this->msg['class'] = "";
 
-    if (isset($_REQUEST["paydunya"])) {
-      wc_add_notice($_REQUEST["paydunya"], "error");
-    }
+    // if (isset($_REQUEST["paydunya"])) {
+    //   wc_add_notice($_REQUEST["paydunya"], "error");
+    // }
 
-    if (isset($_REQUEST["token"]) && $_REQUEST["token"] !== "") {
+    // if (isset($_REQUEST["token"]) && $_REQUEST["token"] !== "") {
+    //   $token = trim($_REQUEST["token"]);
+    //   $this->check_paydunya_response($token);
+    // } else {
+    //   $query_str = $_SERVER['QUERY_STRING'];
+    //   $query_str_arr = explode("?", $query_str);
+    //   foreach ($query_str_arr as $value) {
+    //     $data = explode("=", $value);
+    //     if (trim($data[0]) == "token") {
+    //       $token = isset($data[1]) ? trim($data[1]) : "";
+    //       if ($token !== "") {
+    //         $this->check_paydunya_response($token);
+    //       }
+    //       break;
+    //     }
+    //   }
+    // }
+
+    if (isset($_REQUEST["token"]) && $_REQUEST["token"]  <> "") {
       $token = trim($_REQUEST["token"]);
       $this->check_paydunya_response($token);
     } else {
       $query_str = $_SERVER['QUERY_STRING'];
-      $query_str_arr = explode("?", $query_str);
-      foreach ($query_str_arr as $value) {
-        $data = explode("=", $value);
-        if (trim($data[0]) == "token") {
-          $token = isset($data[1]) ? trim($data[1]) : "";
-          if ($token !== "") {
-            $this->check_paydunya_response($token);
-          }
-          break;
+      parse_str($query_str, $query_str_arr); // Convertir la chaîne en tableau associatif
+    // Vérifier si le paramètre 'token' existe
+    if (isset($query_str_arr['token'])) {
+        $token = trim($query_str_arr['token']); // Récupérer et nettoyer le token
+        if (!empty($token)) {
+            $this->check_paydunya_response($token); // Appeler la fonction avec le token
         }
-      }
+    }
     }
 
     if (version_compare(WOOCOMMERCE_VERSION, '2.0.0', '>=')) {
@@ -290,7 +305,7 @@ class WC_Paydunya extends WC_Payment_Gateway
 
   function post_to_url($url, $data, $order_id)
   {
-
+    
     $json = json_encode($data);
 
     $ch = curl_init();
@@ -326,7 +341,8 @@ class WC_Paydunya extends WC_Payment_Gateway
     WC()->session->set('paydunya_wc_oder_id', $order_id);
 
     if ($response_decoded->response_code && $response_decoded->response_code == "00") {
-      $order = wc_get_order($order_id);
+      $order = new WC_Order($order_id);
+      
 
       $order->add_order_note("PAYDUNYA Token: " . $response_decoded->token);
       return $response_decoded->response_text;
@@ -481,8 +497,8 @@ class WC_Paydunya extends WC_Payment_Gateway
           if ($status == "failed") {
             $message = "La transaction n'a pu être complétée.";
             $message_type = "error";
-            $order->add_order_note("La transaction a échoué ou l'utilisateur a eu à faire demande d'annulation de paiement");
             $order->update_status('failed');
+            $order->add_order_note("La transaction a échoué ou l'utilisateur a eu à faire demande d'annulation de paiement");
             $redirect_url = $order->get_cancel_order_url();
           }
         } else {
