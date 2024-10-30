@@ -35,7 +35,7 @@ class WC_Paydunya extends WC_Payment_Gateway
 
     $this->id = 'paydunya';
     $this->method_title = 'PAYDUNYA';
-    $this->icon = apply_filters('woocommerce_paydunya_icon', plugins_url('assets/images/Icone.svg', __FILE__));
+    $this->icon = apply_filters('woocommerce_paydunya_icon', plugins_url('assets/images/logo.png', __FILE__));
     $this->has_fields = false;
 
     $this->init_form_fields();

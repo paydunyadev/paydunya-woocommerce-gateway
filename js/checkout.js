@@ -14,7 +14,7 @@ const Content = () => {
   const iconUrl =
     settings.icon ||
     domain +
-      "/wp-content/plugins/paydunya-woocommerce-payment-gateway/assets/images/Icone.svg"; // Remplacez par l'URL par défaut de votre choix
+      "/wp-content/plugins/paydunya-woocommerce-gateway-paydunya-woocommerce-payment-gateway/assets/images/Icone.svg"; // Remplacez par l'URL par défaut de votre choix
 
   // Retourne le JSX avec l'icône et la description alignée
   return window.wp.element.createElement(
