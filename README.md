@@ -1,4 +1,4 @@
-# === PAYDUNYA WOOCOMMERCE PAR ===
+# === PAYDUNYA Woocommerce Payment Gateway ===
 Contributors: PAYDUNYA
 Tags: woocommerce, payment gateway, mobile wallet, payment, mobilemoney, mobile money, orange, senegal, orange money, card payment, card, bank, benin, cote d'ivoire, mtn, wari, free money, wizall money, wizall, visa, master card
 Requires at least: 5.0.8
@@ -99,5 +99,5 @@ __*You can select the radio button next to the PAYDUNYA from the list of payment
 
 ## == Changelog ==
 
-## = 1.1.6 =
+## = 2.0.0 =
 -   Second release
