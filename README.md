@@ -1,13 +1,13 @@
 # === PAYDUNYA Woocommerce Payment Gateway ===
 Contributors: PAYDUNYA
-Tags: woocommerce, payment gateway, mobile wallet, payment, mobilemoney, mobile money, orange, senegal, orange money
-Requires at least: 3.0.1
-Tested up to: 4.3.1
-Stable tag: 1.1.5
+Tags: woocommerce, payment gateway, mobile wallet, payment, mobilemoney, mobile money, orange, senegal, orange money, card payment, card, bank, benin, cote d'ivoire, mtn, wari, free money, wizall money, wizall, visa, master card
+Requires at least: 5.0.8
+Tested up to: 5.5.1
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-PAYDUNYA Woocommerce Payment Gateway allows you to accept payment on your Woocommerce store, PAYDUNYA supports Mobile Wallets Method Payment.
+PAYDUNYA Woocommerce Payment Gateway allows you to accept payment on your Woocommerce store, PAYDUNYA supports Mobile Wallets Method Payment and Bank Cards Payment.
 
 
 
