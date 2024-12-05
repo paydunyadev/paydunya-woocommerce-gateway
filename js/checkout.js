@@ -9,13 +9,18 @@ const Content = () => {
       "PAYDUNYA est la plateforme qui facilite le paiement pour l'achat de biens et services via mobile money et cartes bancaires."
   );
 
-  // Vérifiez si l'URL de l'icône est définie dans les paramètres
-  const domain = window.location.protocol + "//" + window.location.host;
-  const iconUrl =
-    settings.icon ||
-    domain +
-      "/wp-content/plugins/paydunya-woocommerce-payment-gateway/assets/images/Icone.svg"; // Remplacez par l'URL par défaut de votre choix
+  const pathname = window.location.pathname;
 
+  // Trouver le nom du dossier dans le chemin
+  const pathParts = pathname.split('/');
+  
+  // Le nom du dossier est le deuxième élément du tableau (index 1), si il existe
+  const folderName = pathParts[1] || ''; // "" en production si WordPress est à la racine
+  
+  // Construire l'URL complète de l'icône en utilisant le nom du dossier si nécessaire
+  const iconUrl = window.location.protocol + "//" + window.location.host + (folderName ? "/" + folderName : "") + "/wp-content/plugins/paydunya-woocommerce-gateway-master/assets/images/Icone.svg";
+ 
+ 
   // Retourne le JSX avec l'icône et la description alignée
   return window.wp.element.createElement(
     "div",
