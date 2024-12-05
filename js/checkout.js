@@ -47,3 +47,4 @@ const Block_Gateway = {
 };
 
 window.wc.wcBlocksRegistry.registerPaymentMethod(Block_Gateway);
+
