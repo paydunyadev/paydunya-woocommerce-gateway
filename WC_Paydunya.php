@@ -274,6 +274,11 @@ class WC_Paydunya extends WC_Payment_Gateway
     $paydunya_args = array(
       "invoice" => array(
         "items" => $paydunya_items,
+        "customer" => array(
+          "name" => $order->get_billing_first_name() ." ". $order->get_billing_last_name() ,
+          "email" => $order->get_billing_email(),
+          "phone" => $order->get_billing_phone()
+        ),
         "total_amount" => $order->get_total(),
         "description" => "Paiement de " . $order->get_total() . " FCFA pour article(s) achetés sur " . get_bloginfo("name")
       ),
