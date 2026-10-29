@@ -1,18 +1,12 @@
-jQuery(document).on("ready", function() {
-    if (jQuery("#woocommerce_paydunya_sms").is(":checked")) {
-        jQuery("#woocommerce_paydunya_sms_url").prop("disabled", false);
-        jQuery("#woocommerce_paydunya_sms_message").prop("disabled", false);
-    } else {
-        jQuery("#woocommerce_paydunya_sms_url").prop("disabled", true);
-        jQuery("#woocommerce_paydunya_sms_message").prop("disabled", true);
-    }
-    jQuery("#woocommerce_paydunya_sms").on("click", function() {
-        if (jQuery(this).is(":checked")) {
-            jQuery("#woocommerce_paydunya_sms_url").prop("disabled", false);
-            jQuery("#woocommerce_paydunya_sms_message").prop("disabled", false);
-        } else {
-            jQuery("#woocommerce_paydunya_sms_url").prop("disabled", true);
-            jQuery("#woocommerce_paydunya_sms_message").prop("disabled", true);
-        }
-    });
+// Page de réglages PAYDUNYA : les champs SMS ne sont modifiables que si la notification SMS est activée.
+jQuery(function ($) {
+  var $sms = $("#woocommerce_paydunya_sms");
+  var $smsFields = $("#woocommerce_paydunya_sms_url, #woocommerce_paydunya_sms_message");
+
+  function toggleSmsFields() {
+    $smsFields.prop("disabled", !$sms.is(":checked"));
+  }
+
+  toggleSmsFields();
+  $sms.on("change", toggleSmsFields);
 });
